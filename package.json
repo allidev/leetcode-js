@@ -2,11 +2,10 @@
   "name": "leetcode",
   "version": "1.0.0",
   "description": "a collection of leetcode solutions",
-  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "",
+  "author": "Xuesong Hu",
   "license": "ISC",
   "type": "module",
   "devDependencies": {

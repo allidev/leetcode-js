@@ -10,10 +10,10 @@ function recursive(N, shouldInclude) {
     const size = temp.length;
     if (size > 0) {
       for (let j = 0; j < size; j++) {
-        ans.push("" + i + "+" + temp[j]);
+        ans.push(`${i}+${temp[j]}`);
       }
     } else if (shouldInclude) {
-      ans.push("" + i);
+      ans.push(`${i}`);
     }
   }
   return ans;

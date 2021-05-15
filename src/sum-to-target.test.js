@@ -1,4 +1,4 @@
-import sumToTarget from './sum-to-target';
+import sumToTarget from "./sum-to-target";
 
 // 1 + Recursive(3) ===>
 //   1 + Recursive(3)[0]
@@ -9,10 +9,9 @@ import sumToTarget from './sum-to-target';
 // 3 + Recursive(1)
 // 4 + Recursive(0)
 
-
-describe('Sum to target', () => {
-    it('should pass the test', () => {
-        const ret = sumToTarget(4);
-        console.log(ret);
-    });
+describe("Sum to target", () => {
+  it("should pass the test", () => {
+    const ret = sumToTarget(4);
+    console.log(ret);
+  });
 });

@@ -11,7 +11,16 @@ import sumToTarget from "./sum-to-target";
 
 describe("Sum to target", () => {
   it("should pass the test", () => {
+    const expected = [
+      "1+1+1+1",
+      "1+1+2",
+      "1+2+1",
+      "1+3",
+      "2+1+1",
+      "2+2",
+      "3+1",
+    ];
     const ret = sumToTarget(4);
-    console.log(ret);
+    expect(ret).toEqual(expected);
   });
 });

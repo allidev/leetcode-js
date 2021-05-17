@@ -1,7 +1,7 @@
 import traversalDFS, { traversalDFSPO, traversalBFS } from "./2DArray";
 
 describe("2D Array traversal", () => {
-  it("should pass all test cases", () => {
+  it("should pass all test cases, dfs, pre-order", () => {
     const matrix = [
       [1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10],
@@ -14,7 +14,7 @@ describe("2D Array traversal", () => {
     ];
     expect(res).toEqual(expected);
   });
-  it("should pass all test cases", () => {
+  it("should pass all test cases, dfs, post-order", () => {
     const matrix = [
       [1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10],
@@ -27,7 +27,7 @@ describe("2D Array traversal", () => {
     ];
     expect(res).toEqual(expected);
   });
-  it("should pass all test cases", () => {
+  it("should pass all test cases, bfs", () => {
     const matrix = [
       [1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10],

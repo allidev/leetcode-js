@@ -22,12 +22,12 @@ function dfs(matrix, row, col, seen, values) {
   }
 }
 
-function bfs(matrix, seen, values) {
+function bfs(matrix, seen, values, row, col) {
   const rows = matrix.length;
   const cols = matrix[0].length;
   const queue = [];
-  queue.push([2, 2]);
-  seen[2][2] = true;
+  queue.push([row, col]);
+  seen[row][col] = true;
   while (queue.length > 0) {
     const n = queue.length;
     for (let i = 0; i < n; i++) {
@@ -86,6 +86,6 @@ export function traversalBFS(matrix) {
     .fill(0)
     .map(() => new Array(matrix[0].length).fill(false));
   const values = [];
-  bfs(matrix, seen, values);
+  bfs(matrix, seen, values, 2, 2);
   return values;
 }

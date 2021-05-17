@@ -6,16 +6,18 @@ const directions = [
 ];
 
 function dfs(matrix, row, col, seen, values) {
-  values.push(matrix[row][col]);
-  seen[row][col] = true;
+  // base case
   const rows = matrix.length;
   const cols = matrix[0].length;
+  if (row < 0 || row >= rows) return;
+  if (col < 0 || col >= cols) return;
+  if (seen[row][col]) return;
+  //recursive case: pre-order
+  values.push(matrix[row][col]);
+  seen[row][col] = true;
   for (const dir of directions) {
     const nextRow = row + dir[0];
     const nextCol = col + dir[1];
-    if (nextRow < 0 || nextRow >= rows) continue;
-    if (nextCol < 0 || nextCol >= cols) continue;
-    if (seen[nextRow][nextCol]) continue;
     dfs(matrix, nextRow, nextCol, seen, values);
   }
 }

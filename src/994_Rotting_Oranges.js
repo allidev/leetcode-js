@@ -5,7 +5,7 @@ const directions = [
   [0, -1],
 ];
 
-function bfs(grid, startingPoints) {
+function bfs(grid, startingPoints, count) {
   // edge case
   if (startingPoints.length === 0) return 0;
   let ans = -1; // starting from -1, since first item is already rotton
@@ -34,16 +34,18 @@ function bfs(grid, startingPoints) {
           // when we need to do in-place update, it should be done
           // when it is added to the queue
           grid[nextRow][nextCol] = 0;
+          count--;
         }
       }
     }
   }
-  return ans;
+  return [ans, count];
 }
 
 export default function orangesRotting(grid) {
   let ans = 0;
   const rottingOranges = [];
+  let count = 0;
   // sequential scan
   const m = grid.length;
   const n = grid[0].length;
@@ -52,15 +54,12 @@ export default function orangesRotting(grid) {
     for (let col = 0; col < n; col++) {
       if (grid[row][col] === 2) {
         rottingOranges.push([row, col]);
+      } else if (grid[row][col] === 1) {
+        count++;
       }
     }
   }
-  ans = bfs(grid, rottingOranges);
+  [ans, count] = bfs(grid, rottingOranges, count);
   // second round: scan for fresh oranges (1)
-  for (let row = 0; row < m; row++) {
-    for (let col = 0; col < n; col++) {
-      if (grid[row][col] === 1) return -1;
-    }
-  }
-  return ans;
+  return count === 0 ? ans : -1;
 }

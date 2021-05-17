@@ -7,7 +7,7 @@ const directions = [
 
 function bfs(grid, startingPoints, count) {
   // edge case
-  if (startingPoints.length === 0) return 0;
+  if (startingPoints.length === 0) return [0, count];
   let ans = -1; // starting from -1, since first item is already rotton
   const m = grid.length;
   const n = grid[0].length;

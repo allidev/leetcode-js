@@ -13,8 +13,8 @@ function dfs(matrix, row, col, seen, values) {
   if (col < 0 || col >= cols) return;
   if (seen[row][col]) return;
   //recursive case: pre-order
-  values.push(matrix[row][col]);
   seen[row][col] = true;
+  values.push(matrix[row][col]);
   for (const dir of directions) {
     const nextRow = row + dir[0];
     const nextCol = col + dir[1];

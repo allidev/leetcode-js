@@ -22,11 +22,37 @@ function dfs(matrix, row, col, seen, values) {
   }
 }
 
+function dfs_post_order(matrix, row, col, seen, values) {
+  // base case
+  const rows = matrix.length;
+  const cols = matrix[0].length;
+  if (row < 0 || row >= rows) return;
+  if (col < 0 || col >= cols) return;
+  if (seen[row][col]) return;
+  //recursive case: pre-order
+  seen[row][col] = true;
+  for (const dir of directions) {
+    const nextRow = row + dir[0];
+    const nextCol = col + dir[1];
+    dfs_post_order(matrix, nextRow, nextCol, seen, values);
+  }
+  values.push(matrix[row][col]);
+}
+
 export default function traversalDFS(matrix) {
   const seen = new Array(matrix.length)
     .fill(0)
     .map(() => new Array(matrix[0].length).fill(false));
   const values = [];
   dfs(matrix, 0, 0, seen, values);
+  return values;
+}
+
+export function traversalDFSPO(matrix) {
+  const seen = new Array(matrix.length)
+    .fill(0)
+    .map(() => new Array(matrix[0].length).fill(false));
+  const values = [];
+  dfs_post_order(matrix, 0, 0, seen, values);
   return values;
 }

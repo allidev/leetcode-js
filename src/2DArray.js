@@ -27,21 +27,15 @@ function bfs(matrix, seen, values, row, col) {
   const cols = matrix[0].length;
   const queue = [];
   queue.push([row, col]);
-  seen[row][col] = true;
   while (queue.length > 0) {
-    const n = queue.length;
-    for (let i = 0; i < n; i++) {
-      const [row, col] = queue.shift();
-      values.push(matrix[row][col]);
-      for (const dir of directions) {
-        const nextRow = row + dir[0];
-        const nextCol = col + dir[1];
-        if (nextRow < 0 || nextRow >= rows) continue;
-        if (nextCol < 0 || nextCol >= cols) continue;
-        if (seen[nextRow][nextCol]) continue;
-        queue.push([nextRow, nextCol]);
-        seen[nextRow][nextCol] = true;
-      }
+    const [row, col] = queue.shift();
+    if (row < 0 || row >= rows) continue;
+    if (col < 0 || col >= cols) continue;
+    if (seen[row][col]) continue;
+    seen[row][col] = true;
+    values.push(matrix[row][col]);
+    for (const dir of directions) {
+      queue.push([row + dir[0], col + dir[1]]);
     }
   }
 }

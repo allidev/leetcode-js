@@ -15,6 +15,8 @@ function bfs(grid, startingPoints) {
   for (const sp of startingPoints) {
     const [row, col] = sp;
     queue.push(sp);
+    // when we need to do in-place update, it should be done
+    // when it is added to the queue
     grid[row][col] = 0;
   }
   while (queue.length > 0) {
@@ -29,6 +31,8 @@ function bfs(grid, startingPoints) {
         if (nextCol < 0 || nextCol >= n) continue;
         if (grid[nextRow][nextCol] === 1) {
           queue.push([nextRow, nextCol]);
+          // when we need to do in-place update, it should be done
+          // when it is added to the queue
           grid[nextRow][nextCol] = 0;
         }
       }

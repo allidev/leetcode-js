@@ -6,14 +6,16 @@ const directions = [
 ];
 
 function bfs(grid, startingPoints) {
+  // edge case
   if (startingPoints.length === 0) return 0;
   let ans = -1; // starting from -1, since first item is already rotton
   const m = grid.length;
   const n = grid[0].length;
   const queue = [];
   for (const sp of startingPoints) {
+    const [row, col] = sp;
     queue.push(sp);
-    grid[sp[0]][sp[1]] = 0;
+    grid[row][col] = 0;
   }
   while (queue.length > 0) {
     ans++;

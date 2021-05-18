@@ -1,7 +1,7 @@
 export function bfs(adjList) {
-  const visited = new Map();
   const ans = [];
   const queue = [];
+  const visited = new Map();
   queue.push(0);
   visited.set(0, true);
   while (queue.length > 0) {
@@ -10,8 +10,8 @@ export function bfs(adjList) {
     const edges = adjList[pos];
     for (const edge of edges) {
       if (visited.get(edge)) continue;
-      visited.set(edge, true);
       queue.push(edge);
+      visited.set(edge, true);
     }
   }
   return ans;

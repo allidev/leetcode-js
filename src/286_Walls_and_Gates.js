@@ -52,6 +52,7 @@ export default function wallsAndGates(rooms) {
   bfs(rooms, gates);
 }
 
+// dfs will have a TLE issue
 function dfs(rooms, row, col, dist) {
   dist++;
   for (const dir of directions) {
@@ -66,6 +67,7 @@ function dfs(rooms, row, col, dist) {
   }
 }
 
+// dfsAlt will have a TLE issue
 function dfsAlt(rooms, row, col, dist) {
   if (row < 0 || row >= rooms.length) return;
   if (col < 0 || col >= rooms[0].length) return;

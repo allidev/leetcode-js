@@ -6,7 +6,7 @@ describe("graphs", () => {
       [1, 3],
       [0],
       [3, 8],
-      [0, 2, 4, 5],
+      [0, 4, 5, 2],
       [3, 6],
       [3],
       [4, 7],
@@ -14,6 +14,6 @@ describe("graphs", () => {
       [2],
     ];
     const res = bfs(adjList);
-    expect(res).toEqual([0, 1, 3, 2, 4, 5, 8, 6, 7]);
+    expect(res).toEqual([0, 1, 3, 4, 5, 2, 6, 8, 7]);
   });
 });

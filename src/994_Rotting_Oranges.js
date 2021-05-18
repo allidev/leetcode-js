@@ -16,7 +16,6 @@ function bfs(grid, startingPoints, count) {
     queue.push(sp);
   }
   while (queue.length > 0) {
-    ans++;
     const size = queue.length;
     for (let i = 0; i < size; i++) {
       const [row, col] = queue.shift();
@@ -34,6 +33,7 @@ function bfs(grid, startingPoints, count) {
         }
       }
     }
+    ans++;
   }
   return [ans, count];
 }

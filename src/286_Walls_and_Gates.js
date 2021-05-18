@@ -51,3 +51,27 @@ export default function wallsAndGates(rooms) {
   }
   bfs(rooms, gates);
 }
+
+function dfs(rooms, row, col, dist) {
+  dist++;
+  for (const dir of directions) {
+    const nextRow = row + dir[0];
+    const nextCol = col + dir[1];
+    if (nextRow < 0 || nextRow >= rooms.length) continue;
+    if (nextCol < 0 || nextCol >= rooms[0].length) continue;
+    if (rooms[nextRow][nextCol] > rooms[row][col]) {
+      rooms[nextRow][nextCol] = dist;
+      dfs(rooms, nextRow, nextCol, dist);
+    }
+  }
+}
+
+export function wallsAndGatesDFS(rooms) {
+  for (let row = 0; row < rooms.length; row++) {
+    for (let col = 0; col < rooms[0].length; col++) {
+      if (rooms[row][col] === GATE) {
+        dfs(rooms, row, col, 0);
+      }
+    }
+  }
+}

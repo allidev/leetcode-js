@@ -66,11 +66,31 @@ function dfs(rooms, row, col, dist) {
   }
 }
 
+function dfsAlt(rooms, row, col, dist) {
+  if (row < 0 || row >= rooms.length) return;
+  if (col < 0 || col >= rooms[0].length) return;
+  if (dist > rooms[row][col]) return;
+  rooms[row][col] = dist;
+  for (const dir of directions) {
+    dfsAlt(rooms, row + dir[0], col + dir[1], dist + 1);
+  }
+}
+
 export function wallsAndGatesDFS(rooms) {
   for (let row = 0; row < rooms.length; row++) {
     for (let col = 0; col < rooms[0].length; col++) {
       if (rooms[row][col] === GATE) {
         dfs(rooms, row, col, 0);
+      }
+    }
+  }
+}
+
+export function wallsAndGatesDFSAlt(rooms) {
+  for (let row = 0; row < rooms.length; row++) {
+    for (let col = 0; col < rooms[0].length; col++) {
+      if (rooms[row][col] === GATE) {
+        dfsAlt(rooms, row, col, 0);
       }
     }
   }

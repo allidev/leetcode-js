@@ -17,6 +17,7 @@ function bfs(grid, startingPoints, count) {
   }
   while (queue.length > 0) {
     const size = queue.length;
+    // processing one layer
     for (let i = 0; i < size; i++) {
       const [row, col] = queue.shift();
       for (const dir of directions) {

@@ -9,8 +9,7 @@ export function bfs(adjList) {
     ans.push(pos);
     const edges = adjList[pos];
     for (const edge of edges) {
-      if (visited[edge]) continue;
-      queue.push(edge);
+      if (!visited[edge]) queue.push(edge);
     }
   }
   return ans;

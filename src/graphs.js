@@ -16,8 +16,6 @@ export function bfs(adjList) {
 }
 
 export function dfs(adjList, vertex, visited, values) {
-  // base case
-  if (visited[vertex]) return;
   // recursive case
   values.push(vertex);
   visited[vertex] = true;

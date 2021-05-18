@@ -9,11 +9,14 @@ const directions = [
   [0, -1],
 ];
 
-function bfs(rooms, row, col) {
+function bfs(rooms, gates) {
   const m = rooms.length;
   const n = rooms[0].length;
   const queue = [];
-  queue.push([row, col]);
+  for (const gate of gates) {
+    const [row, col] = gate;
+    queue.push([row, col]);
+  }
   let dist = 0;
   while (queue.length > 0) {
     dist++;
@@ -26,24 +29,25 @@ function bfs(rooms, row, col) {
         if (nextRow < 0 || nextRow >= m) continue;
         if (nextCol < 0 || nextCol >= n) continue;
         if (rooms[nextRow][nextCol] === WALL) continue;
-        if (rooms[nextRow][nextCol] === GATE) {
-          rooms[row][col] = dist;
-          return;
+        if (rooms[nextRow][nextCol] === INF) {
+          rooms[nextRow][nextCol] = dist;
+          queue.push([nextRow, nextCol]);
         }
-        queue.push([nextRow, nextCol]);
       }
     }
   }
 }
 
 export default function wallsAndGates(rooms) {
-  // sequential scan to find all empty room
-  // call bfs on each empty room
+  // sequential scan to find all gates
+  // call bfs on simultaneously
+  const gates = [];
   for (let row = 0; row < rooms.length; row++) {
     for (let col = 0; col < rooms[0].length; col++) {
-      if (rooms[row][col] === INF) {
-        bfs(rooms, row, col);
+      if (rooms[row][col] === GATE) {
+        gates.push([row, col]);
       }
     }
   }
+  bfs(rooms, gates);
 }
